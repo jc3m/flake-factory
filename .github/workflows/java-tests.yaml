@@ -2,7 +2,7 @@ name: Java Tests
 
 on:
   schedule:
-    - cron: 0 */6 * * *
+    - cron: 0 0 * * *
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -34,9 +34,6 @@ jobs:
         uses: ./.github/actions/analytics-uploader-wrapper
         with:
           token-staging: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          token-prod: ${{ secrets.TRUNK_PROD_ORG_API_TOKEN }}
-          token-dev: ${{ secrets.TRUNK_DEV_ORG_API_TOKEN }}
-          token-dev2: ${{ secrets.TRUNK_DEV2_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/gradle/**/test-results/**/*.xml"
           run: gradle test --project-dir java/gradle
@@ -46,9 +43,6 @@ jobs:
         uses: ./.github/actions/analytics-uploader-wrapper
         with:
           token-staging: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          token-prod: ${{ secrets.TRUNK_PROD_ORG_API_TOKEN }}
-          token-dev: ${{ secrets.TRUNK_DEV_ORG_API_TOKEN }}
-          token-dev2: ${{ secrets.TRUNK_DEV2_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/surefire-reports/*.xml"
           run: mvn test --file java/maven/pom.xml --quiet
@@ -58,9 +52,6 @@ jobs:
         uses: ./.github/actions/analytics-uploader-wrapper
         with:
           token-staging: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          token-prod: ${{ secrets.TRUNK_PROD_ORG_API_TOKEN }}
-          token-dev: ${{ secrets.TRUNK_DEV_ORG_API_TOKEN }}
-          token-dev2: ${{ secrets.TRUNK_DEV2_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/playwright/**/surefire-reports/*.xml"
           run: mvn test --file java/playwright/pom.xml --quiet
