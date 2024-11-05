@@ -2,7 +2,7 @@ name: Javascript Tests
 
 on:
   schedule:
-    - cron: 0 */6 * * *
+    - cron: 0 0 * * *
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -39,9 +39,6 @@ jobs:
         uses: ./.github/actions/analytics-uploader-wrapper
         with:
           token-staging: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          token-prod: ${{ secrets.TRUNK_PROD_ORG_API_TOKEN }}
-          token-dev: ${{ secrets.TRUNK_DEV_ORG_API_TOKEN }}
-          token-dev2: ${{ secrets.TRUNK_DEV2_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/mocha_test.xml"
           run: npm run mocha-test
@@ -51,9 +48,6 @@ jobs:
         uses: ./.github/actions/analytics-uploader-wrapper
         with:
           token-staging: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          token-prod: ${{ secrets.TRUNK_PROD_ORG_API_TOKEN }}
-          token-dev: ${{ secrets.TRUNK_DEV_ORG_API_TOKEN }}
-          token-dev2: ${{ secrets.TRUNK_DEV2_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/*_test.xml,**/junitresults-*.xml"
           run: npm run jest-test
@@ -63,9 +57,6 @@ jobs:
         uses: ./.github/actions/analytics-uploader-wrapper
         with:
           token-staging: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          token-prod: ${{ secrets.TRUNK_PROD_ORG_API_TOKEN }}
-          token-dev: ${{ secrets.TRUNK_DEV_ORG_API_TOKEN }}
-          token-dev2: ${{ secrets.TRUNK_DEV2_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/*_test.xml,**/junitresults-*.xml"
           run: npm run jasmine-test
@@ -75,9 +66,6 @@ jobs:
         uses: ./.github/actions/analytics-uploader-wrapper
         with:
           token-staging: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          token-prod: ${{ secrets.TRUNK_PROD_ORG_API_TOKEN }}
-          token-dev: ${{ secrets.TRUNK_DEV_ORG_API_TOKEN }}
-          token-dev2: ${{ secrets.TRUNK_DEV2_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/*_test.xml,**/junitresults-*.xml"
           run: npm run playwright-test
