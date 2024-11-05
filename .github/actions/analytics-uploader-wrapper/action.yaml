@@ -23,7 +23,7 @@ runs:
       continue-on-error: true
       uses: trunk-io/analytics-uploader@main
       with:
-        org-slug: trunk-staging-org
+        org-slug: jc3m
         token: ${{ inputs.token-staging }}
         cli-version: ${{ inputs.cli-version }}
         junit-paths: ${{ inputs.junit-paths }}
@@ -37,7 +37,7 @@ runs:
       continue-on-error: true
       uses: trunk-io/analytics-uploader@main
       with:
-        org-slug: trunk-staging-org
+        org-slug: jc3m
         token: ${{ inputs.token-staging }}
         junit-paths: ${{ inputs.junit-paths }}
         run: ${{ inputs.run }}
