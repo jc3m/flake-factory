@@ -26,4 +26,11 @@ describe Calculator do
       end
     end
   end
+
+  describe ".double" do
+    context "given the number 4" do
+      it "returns 8" do
+        expect(Calculator.double(4)).to eq(8)
+      end
+    end
 end
